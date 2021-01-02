@@ -41,7 +41,7 @@ db.once("open", () => {
   const changeStream = msgCollection.watch();
 
   changeStream.on("change", (change) => {
-    console.log("A Change occured", change);
+    // console.log("A Change occured", change);
 
     if (change.operationType == "insert") {
       const messageDetails = change.fullDocument;
@@ -50,7 +50,7 @@ db.once("open", () => {
         name: messageDetails.name,
         message: messageDetails.message,
         timestamp: messageDetails.timestamp,
-        // received: messageDetails.received,
+        received: messageDetails.received,
       });
     } else {
       console.log("Error triggering Pusher");
