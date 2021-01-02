@@ -16,10 +16,10 @@ app.use(express.json());
 //Not secured
 
 app.use((req, res, next) => {
-    res.setHeader("Access-Control-Allow-Origin", "*");
-    res.setHeader("Access-Control-Allow-Headers", "*");
-    next();
-  });
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Headers", "*");
+  next();
+});
 
 //Pusher & Mongoose integration into app to >> test << always use postman & pusher(must be open when testing endpoints) to real time checking on endpoints//
 
@@ -58,10 +58,6 @@ db.once("open", () => {
   });
 });
 
-
-
-
-
 //DB config
 // cYebkn2MVNXwQSLU
 const connection_url =
@@ -73,9 +69,9 @@ mongoose.connect(connection_url, {
   useUnifiedTopology: true,
 });
 
-// ??
 // api routes
 //base URL
+
 app.get("/", (req, res) => res.status(200).send("hello world"));
 
 app.get("/messages/sync", (req, res) => {
